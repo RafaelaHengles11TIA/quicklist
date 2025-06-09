@@ -1,22 +1,23 @@
 const items = []
 
 function addItem() {
-    const itemName = document.querySelector("item").value
-    
+    const itemName = document.querySelector("#item").value
+
     const item = {
         name: itemName, 
         checked: false
     }
 
     items.push(item)
-    
+
     document.querySelector("#item").value = ""
+
     showItemsList()
 }
 
 function showItemsList() {
     const sectionList = document.querySelector(".list")
-    
+    sectionList.textContent = ""
 
     items.map((item, index) => {
         sectionList.innerHTML += `
@@ -31,6 +32,7 @@ function showItemsList() {
                     </div>
 
                     <button>
+                    <button onclick="removeItem('${item.name}')">
                         <img src="./assets/trash-icon.svg" alt="trash icon">
                     </button>
                 </div>
